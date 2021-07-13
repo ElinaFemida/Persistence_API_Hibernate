@@ -8,7 +8,7 @@ import javax.persistence.*;
 import java.util.Date;
 
 @Entity
-@Table(name = "price")
+@Table(name = "prices")
 @Getter
 @Setter
 @NoArgsConstructor
@@ -17,11 +17,11 @@ public class Price {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id")
-    private int id;
+    private Long id;
 
     @Column(name = "cost")
     private double cost;
 
-    @Column(name = "dateP")
+    @Column(name = "date")
     private Date date;
 }

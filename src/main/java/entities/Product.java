@@ -17,7 +17,7 @@ public class Product {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id")
-    private int id;
+    private Long id;
 
     @Column(name = "title")
     private String title;
@@ -30,7 +30,8 @@ public class Product {
     @JoinTable(
             name = "orders_products",
             joinColumns = @JoinColumn(name = "product_id"),
-            inverseJoinColumns = @JoinColumn(name = "order_id")
+            inverseJoinColumns = @JoinColumn(name = "order_id"),
+            foreignKey = @ForeignKey(name = "fk_orders_products_orders")
     )
     List<Order> orders;
 
@@ -41,5 +42,10 @@ public class Product {
                 .map(c -> c.getName())
                 .sorted()
                 .collect(Collectors.joining(", "));
+    }
+
+    @Override
+    public String toString() {
+        return title;
     }
 }
